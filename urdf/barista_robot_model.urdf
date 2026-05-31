@@ -15,4 +15,50 @@
         </collision>
     </link>
 
+    <link name="left_caster_wheel">
+        <visual>
+            <origin rpy="0 1.5707 1.5707" xyz="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0352" length="0.0206" />
+            </geometry>
+        </visual>
+
+        <collision>
+            <origin rpy="0 1.5707 1.5707" xyz="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0352" length="0.0206" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base_link_to_left_caster_wheel_joint" type="continuous">
+        <origin rpy="0 0 0" xyz="0 0.126 -0.07525" />
+        <parent link="base_link" />
+        <child link="left_caster_wheel" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <link name="right_caster_wheel">
+        <visual>
+            <origin rpy="0 1.5707 1.5707" xyz="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0352" length="0.0206" />
+            </geometry>
+        </visual>
+
+        <collision>
+            <origin rpy="0 1.5707 1.5707" xyz="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0352" length="0.0206" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base_link_to_right_caster_wheel_joint" type="continuous">
+        <origin rpy="0 0 0" xyz="0 -0.126 -0.07525" />
+        <parent link="base_link" />
+        <child link="right_caster_wheel" />
+        <axis xyz="0 1 0" />
+    </joint>
+
 </robot>
