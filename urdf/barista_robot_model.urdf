@@ -1,11 +1,25 @@
 <?xml version="1.0"?>
 <robot name="barista_robot">
 
+    <material name="blue">
+        <color rgba="0.006 0.151 0.781 1"/>
+    </material>
+
+    <material name="white">
+        <color rgba="1.0 1.0 1.0 1"/>
+    </material>
+
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+
+
     <link name="base_link">
         <visual>
             <geometry>
                 <cylinder radius="0.178" length="0.155" />
             </geometry>
+            <material name="blue" />
         </visual>
 
         <collision>
@@ -21,6 +35,7 @@
             <geometry>
                 <cylinder radius="0.0352" length="0.0206" />
             </geometry>
+            <material name="black" />
         </visual>
 
         <collision>
@@ -44,6 +59,7 @@
             <geometry>
                 <cylinder radius="0.0352" length="0.0206" />
             </geometry>
+            <material name="black" />
         </visual>
 
         <collision>
@@ -67,6 +83,7 @@
             <geometry>
                 <cylinder radius="0.01" length="0.22" />
             </geometry>
+            <material name="white" />
         </visual>
 
         <collision>
@@ -87,6 +104,7 @@
             <geometry>
                 <cylinder radius="0.01" length="0.22" />
             </geometry>
+            <material name="white" />
         </visual>
 
         <collision>
@@ -107,6 +125,7 @@
             <geometry>
                 <cylinder radius="0.01" length="0.22" />
             </geometry>
+            <material name="white" />
         </visual>
 
         <collision>
@@ -127,6 +146,7 @@
             <geometry>
                 <cylinder radius="0.01" length="0.22" />
             </geometry>
+            <material name="white" />
         </visual>
 
         <collision>
@@ -148,6 +168,7 @@
             <geometry>
                 <cylinder radius="0.160" length="0.090" />
             </geometry>
+            <material name="blue" />
         </visual>
 
         <collision>
