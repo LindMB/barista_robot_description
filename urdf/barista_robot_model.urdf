@@ -187,7 +187,7 @@
     <link name="laser_scan_link">
         <visual>
             <geometry>
-                <mesh filename="file:///home/user/ros2_ws/src/checkpoint4_auxiliary_files/meshes/hokuyo_urg_04lx.dae" />
+                <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" />
             </geometry>
         </visual>
 
