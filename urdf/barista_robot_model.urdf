@@ -13,6 +13,9 @@
         <color rgba="0 0 0 1"/>
     </material>
 
+    <material name="green_light">
+        <color rgba="0.0 1.0 0.0 1"/>
+    </material>
 
     <link name="base_link">
         <visual>
@@ -131,6 +134,7 @@
             <geometry>
                 <sphere radius="0.0352" />
             </geometry>
+            <material name="green_light" />
         </visual>
 
         <collision>
