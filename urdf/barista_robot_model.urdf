@@ -69,9 +69,13 @@
         </inertial>
     </link>
 
-    <!-- Gazebo Color for Left Drive Wheel -->
+    <!-- Gazebo - Left Drive Wheel -->
     <gazebo reference="left_drive_wheel">
         <material>Gazebo/Black</material>
+        <kp>1000000.0</kp>
+        <kd>100.0</kd>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
     </gazebo>
 
     <joint name="base_link_to_left_drive_wheel_joint" type="continuous">
@@ -104,9 +108,13 @@
         </inertial>
     </link>
 
-    <!-- Gazebo Color for Right Drive Wheel -->
+    <!-- Gazebo - Right Drive Wheel -->
     <gazebo reference="right_drive_wheel">
         <material>Gazebo/Black</material>
+        <kp>1000000.0</kp>
+        <kd>100.0</kd>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
     </gazebo>
 
     <joint name="base_link_to_right_drive_wheel_joint" type="continuous">
@@ -168,9 +176,13 @@
         </inertial>
     </link>
 
-    <!-- Gazebo Color for Front Caster Wheel -->
+    <!-- Gazebo - Front Caster Wheel -->
     <gazebo reference="front_caster_wheel_yaw_link">
         <material>Gazebo/Green</material>
+        <kp>1000000.0</kp>
+        <kd>100.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
     </gazebo>
 
     <joint name="front_caster_wheel_yaw_joint" type="continuous" >
@@ -232,9 +244,13 @@
         </inertial>
     </link>
 
-    <!-- Gazebo Color for Front Caster Wheel -->
+    <!-- Gazebo - Back Caster Wheel -->
     <gazebo reference="back_caster_wheel_yaw_link">
         <material>Gazebo/Green</material>
+        <kp>1000000.0</kp>
+        <kd>100.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
     </gazebo>
 
     <joint name="back_caster_wheel_yaw_joint" type="continuous" >
