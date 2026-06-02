@@ -14,8 +14,8 @@
         <color rgba="0 0 0 1"/>
     </material>
 
-    <material name="green_light">
-        <color rgba="0.0 1.0 0.0 1"/>
+    <material name="green_dark">
+        <color rgba="0.0 0.5 0.0 1"/>
     </material>
 
     <!-- Base Link -->
@@ -40,6 +40,11 @@
         </inertial>
     </link>
 
+    <!-- Gazebo Color for Base link-->
+    <gazebo reference="base_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
     <!-- Drive Wheels -->
     <link name="left_drive_wheel">
         <visual>
@@ -63,6 +68,11 @@
             <inertia ixx="0.0000172561667" ixy="0" ixz="0" iyy="0.0000172561667" iyz="0" izz="0.000030976" />
         </inertial>
     </link>
+
+    <!-- Gazebo Color for Left Drive Wheel -->
+    <gazebo reference="left_drive_wheel">
+        <material>Gazebo/Black</material>
+    </gazebo>
 
     <joint name="base_link_to_left_drive_wheel_joint" type="continuous">
         <origin rpy="0 0 0" xyz="0 0.126 -0.0775" />
@@ -93,6 +103,11 @@
             <inertia ixx="0.0000172561667" ixy="0" ixz="0" iyy="0.0000172561667" iyz="0" izz="0.000030976" />
         </inertial>
     </link>
+
+    <!-- Gazebo Color for Right Drive Wheel -->
+    <gazebo reference="right_drive_wheel">
+        <material>Gazebo/Black</material>
+    </gazebo>
 
     <joint name="base_link_to_right_drive_wheel_joint" type="continuous">
         <origin rpy="0 0 0" xyz="0 -0.126 -0.0775" />
@@ -137,7 +152,7 @@
             <geometry>
                 <sphere radius="0.0352" />
             </geometry>
-            <material name="green_light" />
+            <material name="green_dark" />
         </visual>
 
         <collision>
@@ -152,6 +167,11 @@
             <inertia ixx="0.0000247808" ixy="0" ixz="0" iyy="0.0000247808" iyz="0" izz="0.0000247808" />
         </inertial>
     </link>
+
+    <!-- Gazebo Color for Front Caster Wheel -->
+    <gazebo reference="front_caster_wheel_yaw_link">
+        <material>Gazebo/Green</material>
+    </gazebo>
 
     <joint name="front_caster_wheel_yaw_joint" type="continuous" >
         <origin rpy="0 0 0" xyz="0 0 0" />
@@ -196,7 +216,7 @@
             <geometry>
                 <sphere radius="0.0352" />
             </geometry>
-            <material name="green_light" />
+            <material name="green_dark" />
         </visual>
 
         <collision>
@@ -211,6 +231,11 @@
             <inertia ixx="0.0000247808" ixy="0" ixz="0" iyy="0.0000247808" iyz="0" izz="0.0000247808" />
         </inertial>
     </link>
+
+    <!-- Gazebo Color for Front Caster Wheel -->
+    <gazebo reference="back_caster_wheel_yaw_link">
+        <material>Gazebo/Green</material>
+    </gazebo>
 
     <joint name="back_caster_wheel_yaw_joint" type="continuous" >
         <origin rpy="0 0 0" xyz="0 0 0" />
@@ -241,6 +266,11 @@
         </inertial>
     </link>
 
+    <!-- Gazebo Color for Upper Right Rod -->
+    <gazebo reference="upper_right_rod">
+        <material>Gazebo/White</material>
+    </gazebo>
+    
     <joint name="base_link_to_upper_right_rod_joint" type="fixed" >
         <origin rpy="0 0 0" xyz="0.07 -0.11 0.1875" />
         <parent link="base_link" />
@@ -267,6 +297,11 @@
             <inertia ixx="0.0001014583333" ixy="0" ixz="0" iyy="0.0001014583333" iyz="0" izz="0.00000125" />
         </inertial>
     </link>
+
+    <!-- Gazebo Color for Lower Right Rod -->
+    <gazebo reference="lower_right_rod">
+        <material>Gazebo/White</material>
+    </gazebo>
 
     <joint name="base_link_to_lower_right_rod_joint" type="fixed" >
         <origin rpy="0 0 0" xyz="-0.07 -0.11 0.1875" />
@@ -295,6 +330,11 @@
         </inertial>
     </link>
 
+    <!-- Gazebo Color for Lower Left Rod -->
+    <gazebo reference="lower_left_rod">
+        <material>Gazebo/White</material>
+    </gazebo>
+
     <joint name="base_link_to_lower_left_rod_joint" type="fixed" >
         <origin rpy="0 0 0" xyz="-0.07 0.11 0.1875" />
         <parent link="base_link" />
@@ -321,6 +361,11 @@
             <inertia ixx="0.0001014583333" ixy="0" ixz="0" iyy="0.0001014583333" iyz="0" izz="0.00000125" />
         </inertial>
     </link>
+
+    <!-- Gazebo Color for Upper Left Rod -->
+    <gazebo reference="upper_left_rod">
+        <material>Gazebo/White</material>
+    </gazebo>
 
     <joint name="base_link_to_upper_left_rod_joint" type="fixed" >
         <origin rpy="0 0 0" xyz="0.07 0.11 0.1875" />
@@ -350,6 +395,11 @@
         </inertial>
     </link>
 
+    <!-- Gazebo Color for Cup Holder Tray -->
+    <gazebo reference="cup_holder_tray">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
     <joint name="base_link_to_cup_holder_tray_joint" type="fixed">
         <origin rpy="0 0 0" xyz="0 0 0.3425" />
         <parent link="base_link" />
@@ -376,6 +426,11 @@
             <inertia ixx="0.0000110833333" ixy="0" ixz="0" iyy="0.0000110833333" iyz="0" izz="0.0000033333333" />
         </inertial>
     </link>
+
+    <!-- Gazebo Color for Laser Scan Link -->
+    <gazebo reference="laser_scan_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
 
     <joint name="base_link_to_laser_scan_link_joint" type="fixed">
         <origin rpy="0 0 0" xyz="0.089 0 0.0775"/>
