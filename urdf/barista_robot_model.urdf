@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot name="barista_robot">
 
+    <!-- Colors -->
     <material name="blue">
         <color rgba="0.006 0.151 0.781 1"/>
     </material>
@@ -17,6 +18,7 @@
         <color rgba="0.0 1.0 0.0 1"/>
     </material>
 
+    <!-- Base Link -->
     <link name="base_link">
         <visual>
             <geometry>
@@ -38,6 +40,7 @@
         </inertial>
     </link>
 
+    <!-- Drive Wheels -->
     <link name="left_drive_wheel">
         <visual>
             <origin rpy="0 1.5707 1.5707" xyz="0 0 0" />
@@ -98,7 +101,7 @@
         <axis xyz="0 1 0" />
     </joint>
 
-
+    <!-- Front caster wheel -->
     <link name="front_caster_wheel_roll_link" >
         <inertial>
             <mass value="0.001" />
@@ -157,7 +160,7 @@
         <axis xyz="0 0 1" />
     </joint>
 
-
+    <!-- Back caster wheel -->
     <link name="back_caster_wheel_roll_link" >
         <inertial>
             <mass value="0.001" />
@@ -216,7 +219,7 @@
         <axis xyz="0 0 1" />
     </joint>
 
-
+    <!-- Standoff Rods -->
     <link name="upper_right_rod" >
         <visual>
             <geometry>
@@ -325,7 +328,7 @@
         <child link="upper_left_rod" />
     </joint>
 
-
+    <!-- Cup Holder Tray -->
     <link name="cup_holder_tray">
         <visual>
             <geometry>
@@ -353,6 +356,7 @@
         <child link="cup_holder_tray" />
     </joint>
 
+    <!-- Lidar (Model) -->
     <link name="laser_scan_link">
         <visual>
             <geometry>
@@ -387,6 +391,7 @@
         <child link="laser_scan_frame" />
     </joint>
 
+    <!-- Lidar Sensor Plugin -->
     <gazebo reference="laser_scan_frame">
         <sensor name="sensor_ray" type="ray">
             <pose>0 0 0 0 0 0</pose>
@@ -420,6 +425,7 @@
         </sensor>
     </gazebo>
 
+    <!-- Joint State Publisher Plugin -->
     <gazebo>
         <plugin name="barista_robot_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
             <ros>
@@ -440,6 +446,7 @@
         </plugin>
     </gazebo>
 
+    <!-- Differential Drive Plugin -->
     <gazebo>
         <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
             <ros>
