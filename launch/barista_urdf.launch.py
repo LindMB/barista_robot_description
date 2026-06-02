@@ -30,15 +30,6 @@ def generate_launch_description():
         output="screen"
     )
 
-    # Joint State Publisher
-    joint_state_publisher_node = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher',
-        parameters=[{'use_sim_time': True}],
-        output='screen'
-    )
-
     # RViz Configuration
     rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'config.rviz')
     
@@ -97,7 +88,6 @@ def generate_launch_description():
     return LaunchDescription(
         [
             robot_state_publisher_node,
-            joint_state_publisher_node,
             rviz_node,
             gazebo,
             TimerAction(
