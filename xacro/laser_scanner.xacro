@@ -1,6 +1,21 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+    <xacro:property name="box_x_size" value="0.2" />
+    <xacro:property name="box_y_size" value="0.2" />
+    <xacro:property name="box_z_size" value="0.5" />
+    <xacro:property name="box_mass" value="0.05" />
+
+    <!-- "box_inertia"
+    # params="mass x y z"
+    # mass: Mass in Kilograms of the link
+    # x,y,z: Are the size of each side of the box in each of the axes in meters -->
+    <xacro:macro name="box_inertia" params="mass x y z" >
+        <inertia ixx="${mass*(y*y+z*z)/12}" ixy = "0" ixz = "0"
+                 iyy="${mass*(x*x+z*z)/12}" iyz = "0"
+                 izz="${mass*(x*x+z*z)/12}" />
+    </xacro:macro>
+
     <xacro:macro name="laser_scanner">
 
         <!-- Laser Scan (Model) -->
@@ -13,14 +28,15 @@
 
             <collision>
                 <geometry>
-                    <box size="0.02 0.02 0.05" />
+                    <box size="${box_x_size} ${box_y_size} ${box_z_size}" />
                 </geometry>
             </collision>
 
             <inertial>
-                <mass value="0.05" />
+                <mass value="${box_mass}" />
                 <origin rpy="0 0 0" xyz="0 0 0" />
-                <inertia ixx="0.0000110833333" ixy="0" ixz="0" iyy="0.0000110833333" iyz="0" izz="0.0000033333333" />
+                <xacro:box_inertia mass="${box_mass}" x="${box_x_size}" y="${box_y_size}" z="${box_z_size}" />
+                <!--inertia ixx="0.0000110833333" ixy="0" ixz="0" iyy="0.0000110833333" iyz="0" izz="0.0000033333333" /-->
             </inertial>
         </link>
 

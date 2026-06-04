@@ -3,6 +3,18 @@
 
     <xacro:property name="rod_radius" value="0.01" />
     <xacro:property name="rod_height" value="0.22" />
+    <xacro:property name="rod_mass" value="0.025" />
+
+    <!-- "cylinder_inertia"
+    # params="mass r l"
+    # mass: Mass in Kilograms of the link
+    # r: Radius of the cylinder in meters
+    # l: height of the cylinder in meters-->
+    <xacro:macro name="cylinder_inertia" params="mass r l" >
+        <inertia ixx="${mass*(3*r*r+l*l)/12}" ixy = "0" ixz = "0"
+                 iyy="${mass*(3*r*r+l*l)/12}" iyz = "0"
+                 izz="${mass*(r*r)/2}" />
+    </xacro:macro>
 
     <xacro:macro name="standoff_rod" params="prefix">
 
@@ -22,9 +34,10 @@
             </collision>
 
             <inertial>
-                <mass value="0.025" />
+                <mass value="${rod_mass}" />
                 <origin rpy="0 0 0" xyz="0 0 0" />
-                <inertia ixx="0.0001014583333" ixy="0" ixz="0" iyy="0.0001014583333" iyz="0" izz="0.00000125" />
+                <xacro:cylinder_inertia mass="${rod_mass}" r="${rod_radius}" l="${rod_height}" />
+                <!--inertia ixx="0.0001014583333" ixy="0" ixz="0" iyy="0.0001014583333" iyz="0" izz="0.00000125" /-->
             </inertial>
         </link>
     </xacro:macro>

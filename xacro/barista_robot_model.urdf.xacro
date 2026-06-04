@@ -9,6 +9,10 @@
     <xacro:include filename="$(find barista_robot_description)/xacro/cup_holder_tray.xacro" />
     <xacro:include filename="$(find barista_robot_description)/xacro/laser_scanner.xacro" />
 
+    <xacro:property name="base_link_radius" value="0.178" />
+    <xacro:property name="base_link_height" value="0.155" />
+    <xacro:property name="base_link_mass" value="0.5" />
+
     <!-- Colors -->
     <material name="blue">
         <color rgba="0.006 0.151 0.781 1"/>
@@ -26,6 +30,27 @@
         <color rgba="0.0 0.5 0.0 1"/>
     </material>
 
+    <!-- "cylinder_inertia"
+    # params="mass r l"
+    # mass: Mass in Kilograms of the link
+    # r: Radius of the cylinder in meters
+    # l: height of the cylinder in meters-->
+    <xacro:macro name="cylinder_inertia" params="mass r l" >
+        <inertia ixx="${mass*(3*r*r+l*l)/12}" ixy = "0" ixz = "0"
+                 iyy="${mass*(3*r*r+l*l)/12}" iyz = "0"
+                 izz="${mass*(r*r)/2}" />
+    </xacro:macro>
+
+    <!-- sphere_inertia"
+    # params="mass r"
+    # mass: Mass in Kilograms of the link
+    # r: Radius of the sphere in meters -->
+    <xacro:macro name="sphere_inertia" params="mass r" >
+        <inertia ixx="${2*mass*r*r/5}" ixy = "0" ixz = "0"
+                 iyy="${2*mass*r*r/5}" iyz = "0"
+                 izz="${2*mass*r*r/5}" />
+    </xacro:macro>
+
     <!-- Base Footprint -->
     <link name="base_footprint"/>
 
@@ -39,21 +64,22 @@
     <link name="base_link">
         <visual>
             <geometry>
-                <cylinder radius="0.178" length="0.155" />
+                <cylinder radius="${base_link_radius}" length="${base_link_height}" />
             </geometry>
             <material name="blue" />
         </visual>
 
         <collision>
             <geometry>
-                <cylinder radius="0.178" length="0.155" />
+                <cylinder radius="${base_link_radius}" length="${base_link_height}" />
             </geometry>
         </collision>
 
         <inertial>
-            <mass value="0.5" />
+            <mass value="${base_link_mass}" />
             <origin rpy="0 0 0" xyz="0 0 0" />
-            <inertia ixx="0.0049615416667" ixy="0" ixz="0" iyy="0.0049615416667" iyz="0" izz="0.007921" />
+            <xacro:cylinder_inertia mass="${base_link_mass}" r="${base_link_radius}" l="${base_link_height}" />
+            <!--inertia ixx="0.0049615416667" ixy="0" ixz="0" iyy="0.0049615416667" iyz="0" izz="0.007921" /-->
         </inertial>
     </link>
 
@@ -62,24 +88,24 @@
     <xacro:drive_wheel drive_wheel_name="right_drive_wheel" />
 
     <joint name="base_link_to_left_drive_wheel_joint" type="continuous">
-        <origin rpy="0 0 0" xyz="0 0.126 -0.0775" />
+        <origin rpy="0 0 0" xyz="0 0.126 -${base_link_height}/2" />
         <parent link="base_link" />
         <child link="left_drive_wheel" />
         <axis xyz="0 1 0" />
     </joint>
 
     <joint name="base_link_to_right_drive_wheel_joint" type="continuous">
-        <origin rpy="0 0 0" xyz="0 -0.126 -0.0775" />
+        <origin rpy="0 0 0" xyz="0 -0.126 -${base_link_height}/2" />
         <parent link="base_link" />
         <child link="right_drive_wheel" />
         <axis xyz="0 1 0" />
     </joint>
 
-    <!-- Caster Wheels -->
+    <!-- Caster Wheels + Joints-->
     <xacro:caster_wheel prefix="front" />
     <xacro:caster_wheel prefix="back" />
 
-    <joint name="front_caster_wheel_roll_joint" type="continuous" >
+    <!--joint name="front_caster_wheel_roll_joint" type="continuous" >
         <origin rpy="0 0 0" xyz="0.11 0 -0.0775" />
         <parent link="base_link" />
         <child link="front_caster_wheel_roll_link" />
@@ -119,7 +145,7 @@
         <parent link="back_caster_wheel_pitch_link" />
         <child link="back_caster_wheel_yaw_link" />
         <axis xyz="0 0 1" />
-    </joint>
+    </joint-->
 
     <!-- Standoff rods -->
     <xacro:standoff_rod prefix="upper_right" />
@@ -168,7 +194,7 @@
         <xacro:laser_scanner />
         
         <joint name="base_link_to_laser_scan_link_joint" type="fixed">
-            <origin rpy="0 0 0" xyz="0.089 0 0.0775"/>
+            <origin rpy="0 0 0" xyz="0.089 0 ${base_link_height}/2"/>
             <parent link="base_link" />
             <child link="laser_scan_link" />
         </joint>

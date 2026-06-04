@@ -3,6 +3,18 @@
 
     <xacro:property name="tray_radius" value="0.160" />
     <xacro:property name="tray_width" value="0.090" />
+    <xacro:property name="tray_mass" value="0.25" />
+
+    <!-- "cylinder_inertia"
+    # params="mass r l"
+    # mass: Mass in Kilograms of the link
+    # r: Radius of the cylinder in meters
+    # l: height of the cylinder in meters-->
+    <xacro:macro name="cylinder_inertia" params="mass r l" >
+        <inertia ixx="${mass*(3*r*r+l*l)/12}" ixy = "0" ixz = "0"
+                 iyy="${mass*(3*r*r+l*l)/12}" iyz = "0"
+                 izz="${mass*(r*r)/2}" />
+    </xacro:macro>
 
     <xacro:macro name="cup_holder_tray">
         <!-- Cup Holder Tray -->
@@ -21,9 +33,10 @@
             </collision>
 
             <inertial>
-                <mass value="0.25" />
+                <mass value="${tray_mass}" />
                 <origin rpy="0 0 0" xyz="0 0 0" />
-                <inertia ixx="0.00176875" ixy="0" ixz="0" iyy="0.00176875" iyz="0" izz="0.0032" />
+                <xacro:cylinder_inertia mass="${tray_mass}" r="${tray_radius}" l="${tray_width}" />
+                <!--inertia ixx="0.00176875" ixy="0" ixz="0" iyy="0.00176875" iyz="0" izz="0.0032" /-->
             </inertial>
         </link>
     </xacro:macro>
