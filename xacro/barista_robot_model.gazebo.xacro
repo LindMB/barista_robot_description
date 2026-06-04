@@ -69,6 +69,11 @@
             <material>Gazebo/Blue</material>
         </gazebo>
 
+        <!-- Gazebo Color for Laser Scan Link -->
+        <gazebo reference="laser_scan_link">
+            <material>Gazebo/Grey</material>
+        </gazebo>
+
     </xacro:macro>
 
 </robot>
