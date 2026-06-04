@@ -27,7 +27,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LaserScan
 Visualization Manager:
   Class: ""
   Displays:
@@ -80,6 +80,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
@@ -187,7 +191,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: base_footprint
     Frame Rate: 30
   Name: root
   Tools:
@@ -248,7 +252,7 @@ Visualization Manager:
       Pitch: 0.27500003576278687
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.7149996757507324
+      Yaw: 0.709999680519104
     Saved: ~
 Window Geometry:
   Displays:
