@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+    <xacro:property name="sphere_radius" value="0.0352" />
+    
     <xacro:macro name="caster_wheel" params="prefix">  
-
-        <xacro:property name="sphere_radius" value="0.0352" />
-
         <!-- Caster wheel -->
         <link name="${prefix}_caster_wheel_roll_link" >
             <inertial>
