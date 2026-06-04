@@ -4,6 +4,7 @@
     <xacro:include filename="$(find barista_robot_description)/xacro/barista_robot_model.gazebo.xacro" />
     <xacro:include filename="$(find barista_robot_description)/xacro/barista_robot_model.gazebo_plugins.xacro" />
     <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro" />
+    <xacro:include filename="$(find barista_robot_description)/xacro/caster_wheel.xacro" />
 
     <!-- Colors -->
     <material name="blue">
@@ -60,6 +61,52 @@
         <parent link="base_link" />
         <child link="right_drive_wheel" />
         <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- Caster Wheels -->
+    <xacro:caster_wheel prefix="front" />
+    <xacro:caster_wheel prefix="back" />
+
+    <joint name="front_caster_wheel_roll_joint" type="continuous" >
+        <origin rpy="0 0 0" xyz="0.11 0 -0.0775" />
+        <parent link="base_link" />
+        <child link="front_caster_wheel_roll_link" />
+        <axis xyz="1 0 0" />
+    </joint>
+
+    <joint name="front_caster_wheel_pitch_joint" type="continuous" >
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="front_caster_wheel_roll_link" />
+        <child link="front_caster_wheel_pitch_link" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <joint name="front_caster_wheel_yaw_joint" type="continuous" >
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="front_caster_wheel_pitch_link" />
+        <child link="front_caster_wheel_yaw_link" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <joint name="back_caster_wheel_roll_joint" type="continuous" >
+        <origin rpy="0 0 0" xyz="-0.11 0 -0.0775" />
+        <parent link="base_link" />
+        <child link="back_caster_wheel_roll_link" />
+        <axis xyz="1 0 0" />
+    </joint>
+
+    <joint name="back_caster_wheel_pitch_joint" type="continuous" >
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="back_caster_wheel_roll_link" />
+        <child link="back_caster_wheel_pitch_link" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <joint name="back_caster_wheel_yaw_joint" type="continuous" >
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="back_caster_wheel_pitch_link" />
+        <child link="back_caster_wheel_yaw_link" />
+        <axis xyz="0 0 1" />
     </joint>
 
     <!-- Gazebo physical properties and colors -->

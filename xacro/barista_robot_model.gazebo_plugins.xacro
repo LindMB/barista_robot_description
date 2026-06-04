@@ -13,6 +13,14 @@
 
                 <joint_name>base_link_to_left_drive_wheel_joint</joint_name>
                 <joint_name>base_link_to_right_drive_wheel_joint</joint_name>
+
+                <joint_name>front_caster_wheel_roll_joint</joint_name>
+                <joint_name>front_caster_wheel_pitch_joint</joint_name>
+                <joint_name>front_caster_wheel_yaw_joint</joint_name>
+
+                <joint_name>back_caster_wheel_roll_joint</joint_name>
+                <joint_name>back_caster_wheel_pitch_joint</joint_name>
+                <joint_name>back_caster_wheel_yaw_joint</joint_name>
             </plugin>
         </gazebo>
 
