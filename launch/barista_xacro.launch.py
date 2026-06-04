@@ -66,7 +66,7 @@ def generate_launch_description():
     )
     
     # Robot Position and orientation when spawned
-    position = [0.0, 0.0, 0.0878] # [X, Y, Z]
+    position = [0.0, 0.0, 0.0] # [X, Y, Z]
     orientation = [0.0, 0.0, 0.0]  # [Roll, Pitch, Yaw]
 
     entity_name = "barista_robot"
