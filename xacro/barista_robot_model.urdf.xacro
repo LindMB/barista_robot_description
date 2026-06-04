@@ -5,6 +5,7 @@
     <xacro:include filename="$(find barista_robot_description)/xacro/barista_robot_model.gazebo_plugins.xacro" />
     <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro" />
     <xacro:include filename="$(find barista_robot_description)/xacro/caster_wheel.xacro" />
+    <xacro:include filename="$(find barista_robot_description)/xacro/standoff_rod.xacro" />
 
     <!-- Colors -->
     <material name="blue">
@@ -107,6 +108,36 @@
         <parent link="back_caster_wheel_pitch_link" />
         <child link="back_caster_wheel_yaw_link" />
         <axis xyz="0 0 1" />
+    </joint>
+
+    <!-- Standoff rods -->
+    <xacro:standoff_rod prefix="upper_right" />
+    <xacro:standoff_rod prefix="lower_right" />
+    <xacro:standoff_rod prefix="upper_left" />
+    <xacro:standoff_rod prefix="lower_left" />
+
+    <joint name="base_link_to_upper_right_rod_joint" type="fixed" >
+        <origin rpy="0 0 0" xyz="0.07 -0.11 0.1875" />
+        <parent link="base_link" />
+        <child link="upper_right_rod" />
+    </joint>
+
+    <joint name="base_link_to_lower_right_rod_joint" type="fixed" >
+        <origin rpy="0 0 0" xyz="-0.07 -0.11 0.1875" />
+        <parent link="base_link" />
+        <child link="lower_right_rod" />
+    </joint>
+
+    <joint name="base_link_to_lower_left_rod_joint" type="fixed" >
+        <origin rpy="0 0 0" xyz="-0.07 0.11 0.1875" />
+        <parent link="base_link" />
+        <child link="lower_left_rod" />
+    </joint>
+
+     <joint name="base_link_to_upper_left_rod_joint" type="fixed" >
+        <origin rpy="0 0 0" xyz="0.07 0.11 0.1875" />
+        <parent link="base_link" />
+        <child link="upper_left_rod" />
     </joint>
 
     <!-- Gazebo physical properties and colors -->

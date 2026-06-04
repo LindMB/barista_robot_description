@@ -44,6 +44,26 @@
             <mu2>0.5</mu2>
         </gazebo>
 
+        <!-- Gazebo Color for Upper Right Rod -->
+        <gazebo reference="upper_right_rod">
+            <material>Gazebo/White</material>
+        </gazebo>
+
+        <!-- Gazebo Color for Lower Right Rod -->
+        <gazebo reference="lower_right_rod">
+            <material>Gazebo/White</material>
+        </gazebo>
+
+        <!-- Gazebo Color for Lower Left Rod -->
+        <gazebo reference="lower_left_rod">
+            <material>Gazebo/White</material>
+        </gazebo>
+
+        <!-- Gazebo Color for Upper Left Rod -->
+        <gazebo reference="upper_left_rod">
+            <material>Gazebo/White</material>
+        </gazebo>
+
     </xacro:macro>
 
 </robot>
