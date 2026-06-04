@@ -6,6 +6,7 @@
     <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro" />
     <xacro:include filename="$(find barista_robot_description)/xacro/caster_wheel.xacro" />
     <xacro:include filename="$(find barista_robot_description)/xacro/standoff_rod.xacro" />
+    <xacro:include filename="$(find barista_robot_description)/xacro/cup_holder_tray.xacro" />
 
     <!-- Colors -->
     <material name="blue">
@@ -138,6 +139,15 @@
         <origin rpy="0 0 0" xyz="0.07 0.11 0.1875" />
         <parent link="base_link" />
         <child link="upper_left_rod" />
+    </joint>
+
+    <!-- Cup Holder Tray -->
+    <xacro:cup_holder_tray />
+
+    <joint name="base_link_to_cup_holder_tray_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0.3425" />
+        <parent link="base_link" />
+        <child link="cup_holder_tray" />
     </joint>
 
     <!-- Gazebo physical properties and colors -->
