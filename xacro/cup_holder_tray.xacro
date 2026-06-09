@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:property name="tray_radius" value="0.160" />
-    <xacro:property name="tray_width" value="0.090" />
-    <xacro:property name="tray_mass" value="0.25" />
-
     <!-- "cylinder_inertia"
     # params="mass r l"
     # mass: Mass in Kilograms of the link

@@ -9,11 +9,31 @@
     <xacro:include filename="$(find barista_robot_description)/xacro/cup_holder_tray.xacro" />
     <xacro:include filename="$(find barista_robot_description)/xacro/laser_scanner.xacro" />
 
+    <!-- Robot global dimensions -->
     <xacro:property name="base_link_radius" value="0.178" />
     <xacro:property name="base_link_height" value="0.155" />
     <xacro:property name="base_link_mass" value="0.5" />
 
     <xacro:property name="drive_wheel_radius" value="0.0352"/>
+    <xacro:property name="drive_wheel_width" value="0.0206"/>
+    <xacro:property name="drive_wheel_mass" value="0.05"/>
+
+    <xacro:property name="caster_wheel_radius" value="0.0352" />
+    <xacro:property name="caster_wheel_mass" value="0.05" />
+    <xacro:property name="negligible_mass" value="0.001" />
+
+    <xacro:property name="rod_radius" value="0.01" />
+    <xacro:property name="rod_height" value="0.22" />
+    <xacro:property name="rod_mass" value="0.025" />
+
+    <xacro:property name="tray_radius" value="0.160" />
+    <xacro:property name="tray_width" value="0.090" />
+    <xacro:property name="tray_mass" value="0.25" />
+
+    <xacro:property name="box_x_size" value="0.02" /> <!-- Laser scanner -->
+    <xacro:property name="box_y_size" value="0.02" />
+    <xacro:property name="box_z_size" value="0.05" />
+    <xacro:property name="box_mass" value="0.05" />
 
     <!-- Colors -->
     <material name="blue">

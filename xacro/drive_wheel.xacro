@@ -2,12 +2,6 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:property name="drive_wheel_radius" value="0.0352"/>
-    <xacro:property name="drive_wheel_width" value="0.0206"/>
-    <xacro:property name="drive_wheel_mass" value="0.05"/>
-
-    <xacro:property name="base_link_height" value="0.155" />
-
     <!-- "cylinder_inertia"
     # params="mass r l"
     # mass: Mass in Kilograms of the link

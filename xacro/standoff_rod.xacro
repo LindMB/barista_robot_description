@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:property name="rod_radius" value="0.01" />
-    <xacro:property name="rod_height" value="0.22" />
-    <xacro:property name="rod_mass" value="0.025" />
-
     <!-- "cylinder_inertia"
     # params="mass r l"
     # mass: Mass in Kilograms of the link
