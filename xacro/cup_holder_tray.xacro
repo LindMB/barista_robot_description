@@ -39,6 +39,12 @@
                 <!--inertia ixx="0.00176875" ixy="0" ixz="0" iyy="0.00176875" iyz="0" izz="0.0032" /-->
             </inertial>
         </link>
+
+        <joint name="base_link_to_cup_holder_tray_joint" type="fixed">
+            <origin rpy="0 0 0" xyz="0 0 0.3425" />
+            <parent link="base_link" />
+            <child link="cup_holder_tray" />
+        </joint>
     </xacro:macro>
 
 </robot>

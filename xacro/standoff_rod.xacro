@@ -16,7 +16,7 @@
                  izz="${mass*(r*r)/2}" />
     </xacro:macro>
 
-    <xacro:macro name="standoff_rod" params="prefix">
+    <xacro:macro name="standoff_rod" params="prefix origin_joint_x origin_joint_y">
 
         <!-- Standoff rod -->
         <link name="${prefix}_rod" >
@@ -40,6 +40,14 @@
                 <!--inertia ixx="0.0001014583333" ixy="0" ixz="0" iyy="0.0001014583333" iyz="0" izz="0.00000125" /-->
             </inertial>
         </link>
+
+        <joint name="base_link_to_${prefix}_rod_joint" type="fixed" >
+            <origin rpy="0 0 0" xyz="${origin_joint_x} ${origin_joint_y} 0.1875" />
+            <parent link="base_link" />
+            <child link="${prefix}_rod" />
+        </joint>
+
+
     </xacro:macro>
 
 </robot>

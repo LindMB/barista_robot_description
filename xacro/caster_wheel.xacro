@@ -15,7 +15,7 @@
                  izz="${2*mass*r*r/5}" />
     </xacro:macro>
     
-    <xacro:macro name="caster_wheel" params="prefix">  
+    <xacro:macro name="caster_wheel" params="prefix joint_origin_x">  
         <!-- Caster wheel -->
         <link name="${prefix}_caster_wheel_roll_link" >
             <inertial>
@@ -58,7 +58,7 @@
         </link>
 
         <joint name="${prefix}_caster_wheel_roll_joint" type="continuous" >
-            <origin rpy="0 0 0" xyz="0.11 0 -0.0775" />
+            <origin rpy="0 0 0" xyz="${joint_origin_x} 0 -0.0775" />
             <parent link="base_link" />
             <child link="${prefix}_caster_wheel_roll_link" />
             <axis xyz="1 0 0" />

@@ -13,6 +13,8 @@
     <xacro:property name="base_link_height" value="0.155" />
     <xacro:property name="base_link_mass" value="0.5" />
 
+    <xacro:property name="drive_wheel_radius" value="0.0352"/>
+
     <!-- Colors -->
     <material name="blue">
         <color rgba="0.006 0.151 0.781 1"/>
@@ -41,21 +43,11 @@
                  izz="${mass*(r*r)/2}" />
     </xacro:macro>
 
-    <!-- sphere_inertia"
-    # params="mass r"
-    # mass: Mass in Kilograms of the link
-    # r: Radius of the sphere in meters -->
-    <xacro:macro name="sphere_inertia" params="mass r" >
-        <inertia ixx="${2*mass*r*r/5}" ixy = "0" ixz = "0"
-                 iyy="${2*mass*r*r/5}" iyz = "0"
-                 izz="${2*mass*r*r/5}" />
-    </xacro:macro>
-
     <!-- Base Footprint -->
     <link name="base_footprint"/>
 
     <joint name="base_footprint_to_base_link" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 0.1127" />
+        <origin rpy="0 0 0" xyz="0 0 ${base_link_height/2 + drive_wheel_radius}" />
         <parent link="base_footprint"/>
         <child link="base_link"/>
     </joint>
@@ -84,108 +76,23 @@
     </link>
 
     <!-- Drive Wheels -->
-    <xacro:drive_wheel drive_wheel_name="left_drive_wheel" />
-    <xacro:drive_wheel drive_wheel_name="right_drive_wheel" />
-
-    <joint name="base_link_to_left_drive_wheel_joint" type="continuous">
-        <origin rpy="0 0 0" xyz="0 0.126 -${base_link_height}/2" />
-        <parent link="base_link" />
-        <child link="left_drive_wheel" />
-        <axis xyz="0 1 0" />
-    </joint>
-
-    <joint name="base_link_to_right_drive_wheel_joint" type="continuous">
-        <origin rpy="0 0 0" xyz="0 -0.126 -${base_link_height}/2" />
-        <parent link="base_link" />
-        <child link="right_drive_wheel" />
-        <axis xyz="0 1 0" />
-    </joint>
+    <xacro:drive_wheel drive_wheel_name="left_drive_wheel" origin_joint_y="0.126"/>
+    <xacro:drive_wheel drive_wheel_name="right_drive_wheel" origin_joint_y="-0.126" />
 
     <!-- Caster Wheels + Joints-->
-    <xacro:caster_wheel prefix="front" />
-    <xacro:caster_wheel prefix="back" />
-
-    <!--joint name="front_caster_wheel_roll_joint" type="continuous" >
-        <origin rpy="0 0 0" xyz="0.11 0 -0.0775" />
-        <parent link="base_link" />
-        <child link="front_caster_wheel_roll_link" />
-        <axis xyz="1 0 0" />
-    </joint>
-
-    <joint name="front_caster_wheel_pitch_joint" type="continuous" >
-        <origin rpy="0 0 0" xyz="0 0 0" />
-        <parent link="front_caster_wheel_roll_link" />
-        <child link="front_caster_wheel_pitch_link" />
-        <axis xyz="0 1 0" />
-    </joint>
-
-    <joint name="front_caster_wheel_yaw_joint" type="continuous" >
-        <origin rpy="0 0 0" xyz="0 0 0" />
-        <parent link="front_caster_wheel_pitch_link" />
-        <child link="front_caster_wheel_yaw_link" />
-        <axis xyz="0 0 1" />
-    </joint>
-
-    <joint name="back_caster_wheel_roll_joint" type="continuous" >
-        <origin rpy="0 0 0" xyz="-0.11 0 -0.0775" />
-        <parent link="base_link" />
-        <child link="back_caster_wheel_roll_link" />
-        <axis xyz="1 0 0" />
-    </joint>
-
-    <joint name="back_caster_wheel_pitch_joint" type="continuous" >
-        <origin rpy="0 0 0" xyz="0 0 0" />
-        <parent link="back_caster_wheel_roll_link" />
-        <child link="back_caster_wheel_pitch_link" />
-        <axis xyz="0 1 0" />
-    </joint>
-
-    <joint name="back_caster_wheel_yaw_joint" type="continuous" >
-        <origin rpy="0 0 0" xyz="0 0 0" />
-        <parent link="back_caster_wheel_pitch_link" />
-        <child link="back_caster_wheel_yaw_link" />
-        <axis xyz="0 0 1" />
-    </joint-->
+    <xacro:caster_wheel prefix="front" joint_origin_x="0.11" />
+    <xacro:caster_wheel prefix="back" joint_origin_x="-0.11" />
 
     <!-- Standoff rods -->
-    <xacro:standoff_rod prefix="upper_right" />
-    <xacro:standoff_rod prefix="lower_right" />
-    <xacro:standoff_rod prefix="upper_left" />
-    <xacro:standoff_rod prefix="lower_left" />
-
-    <joint name="base_link_to_upper_right_rod_joint" type="fixed" >
-        <origin rpy="0 0 0" xyz="0.07 -0.11 0.1875" />
-        <parent link="base_link" />
-        <child link="upper_right_rod" />
-    </joint>
-
-    <joint name="base_link_to_lower_right_rod_joint" type="fixed" >
-        <origin rpy="0 0 0" xyz="-0.07 -0.11 0.1875" />
-        <parent link="base_link" />
-        <child link="lower_right_rod" />
-    </joint>
-
-    <joint name="base_link_to_lower_left_rod_joint" type="fixed" >
-        <origin rpy="0 0 0" xyz="-0.07 0.11 0.1875" />
-        <parent link="base_link" />
-        <child link="lower_left_rod" />
-    </joint>
-
-     <joint name="base_link_to_upper_left_rod_joint" type="fixed" >
-        <origin rpy="0 0 0" xyz="0.07 0.11 0.1875" />
-        <parent link="base_link" />
-        <child link="upper_left_rod" />
-    </joint>
+    <xacro:standoff_rod prefix="upper_right" origin_joint_x="0.07" origin_joint_y="-0.11" />
+    <xacro:standoff_rod prefix="lower_right" origin_joint_x="-0.07" origin_joint_y="-0.11" />
+    <xacro:standoff_rod prefix="lower_left" origin_joint_x="-0.07" origin_joint_y="0.11" />
+    <xacro:standoff_rod prefix="upper_left" origin_joint_x="0.07" origin_joint_y="0.11" />
 
     <!-- Cup Holder Tray -->
     <xacro:cup_holder_tray />
 
-    <joint name="base_link_to_cup_holder_tray_joint" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 0.3425" />
-        <parent link="base_link" />
-        <child link="cup_holder_tray" />
-    </joint>
-
+    <!-- Include Laser scanner or not -->
     <xacro:arg name="include_laser" default="true"/>
 
     <xacro:if value="$(arg include_laser)">
@@ -194,7 +101,7 @@
         <xacro:laser_scanner />
         
         <joint name="base_link_to_laser_scan_link_joint" type="fixed">
-            <origin rpy="0 0 0" xyz="0.089 0 ${base_link_height}/2"/>
+            <origin rpy="0 0 0" xyz="0.089 0 ${base_link_height/2}"/>
             <parent link="base_link" />
             <child link="laser_scan_link" />
         </joint>
