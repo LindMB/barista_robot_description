@@ -1,15 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- "box_inertia"
-    # params="mass x y z"
-    # mass: Mass in Kilograms of the link
-    # x,y,z: Are the size of each side of the box in each of the axes in meters -->
-    <xacro:macro name="box_inertia" params="mass x y z" >
-        <inertia ixx="${mass*(y*y+z*z)/12}" ixy = "0" ixz = "0"
-                 iyy="${mass*(x*x+z*z)/12}" iyz = "0"
-                 izz="${mass*(x*x+z*z)/12}" />
-    </xacro:macro>
+    <xacro:include filename="$(find barista_robot_description)/xacro/inertia_macros.xacro" />
 
     <xacro:macro name="laser_scanner">
 

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot">
+
+    <!-- Utils -->
+
+    <!-- "cylinder_inertia"
+    # params="mass r l"
+    # mass: Mass in Kilograms of the link
+    # r: Radius of the cylinder in meters
+    # l: height of the cylinder in meters-->
+    <xacro:macro name="cylinder_inertia" params="mass r l" >
+        <inertia ixx="${mass*(3*r*r+l*l)/12}" ixy = "0" ixz = "0"
+                 iyy="${mass*(3*r*r+l*l)/12}" iyz = "0"
+                 izz="${mass*(r*r)/2}" />
+    </xacro:macro>
+
+    <!-- sphere_inertia"
+    # params="mass r"
+    # mass: Mass in Kilograms of the link
+    # r: Radius of the sphere in meters -->
+    <xacro:macro name="sphere_inertia" params="mass r" >
+        <inertia ixx="${2*mass*r*r/5}" ixy = "0" ixz = "0"
+                 iyy="${2*mass*r*r/5}" iyz = "0"
+                 izz="${2*mass*r*r/5}" />
+    </xacro:macro>
+
+    <!-- "box_inertia"
+    # params="mass x y z"
+    # mass: Mass in Kilograms of the link
+    # x,y,z: Are the size of each side of the box in each of the axes in meters -->
+    <xacro:macro name="box_inertia" params="mass x y z" >
+        <inertia ixx="${mass*(y*y+z*z)/12}" ixy = "0" ixz = "0"
+                 iyy="${mass*(x*x+z*z)/12}" iyz = "0"
+                 izz="${mass*(x*x+z*z)/12}" />
+    </xacro:macro>
+
+</robot>

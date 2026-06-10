@@ -2,16 +2,7 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- "cylinder_inertia"
-    # params="mass r l"
-    # mass: Mass in Kilograms of the link
-    # r: Radius of the cylinder in meters
-    # l: height of the cylinder in meters-->
-    <xacro:macro name="cylinder_inertia" params="mass r l" >
-        <inertia ixx="${mass*(3*r*r+l*l)/12}" ixy = "0" ixz = "0"
-                 iyy="${mass*(3*r*r+l*l)/12}" iyz = "0"
-                 izz="${mass*(r*r)/2}" />
-    </xacro:macro>
+    <xacro:include filename="$(find barista_robot_description)/xacro/inertia_macros.xacro" />
 
     <xacro:macro name="drive_wheel" params="drive_wheel_name origin_joint_y">
         <!-- Drive Wheel -->

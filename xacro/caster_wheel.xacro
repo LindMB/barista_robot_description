@@ -1,20 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-
-    <!--xacro:property name="caster_wheel_radius" value="0.0352" />
-    <xacro:property name="caster_wheel_mass" value="0.05" />
-    <xacro:property name="negligible_mass" value="0.001" /-->
-
-    <!-- sphere_inertia"
-    # params="mass r"
-    # mass: Mass in Kilograms of the link
-    # r: Radius of the sphere in meters -->
-    <xacro:macro name="sphere_inertia" params="mass r" >
-        <inertia ixx="${2*mass*r*r/5}" ixy = "0" ixz = "0"
-                 iyy="${2*mass*r*r/5}" iyz = "0"
-                 izz="${2*mass*r*r/5}" />
-    </xacro:macro>
     
+    <xacro:include filename="$(find barista_robot_description)/xacro/inertia_macros.xacro" />
+
     <xacro:macro name="caster_wheel" params="prefix joint_origin_x">  
         <!-- Caster wheel -->
         <link name="${prefix}_caster_wheel_roll_link" >
