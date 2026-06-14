@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot">
- 
+    
+    <!-- Robot name -->
+    <xacro:property name="robot_name" value="$(arg robot_name)" />
+
     <!-- Robot global dimensions -->
     <xacro:property name="base_link_radius" value="0.178" />
     <xacro:property name="base_link_height" value="0.155" />
