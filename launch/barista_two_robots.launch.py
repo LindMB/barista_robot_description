@@ -122,6 +122,7 @@ def generate_launch_description():
         ]
     )
 
+    # Static Transform Publisher - TF between /world and /rick/odom
     static_tf_pub_to_rick_odom = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
@@ -133,6 +134,7 @@ def generate_launch_description():
                    'world', robot_name_1 + '/odom']
     )
 
+    # Static Transform Publisher - TF between /world and /morty/odom
     static_tf_pub_to_morty_odom = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
