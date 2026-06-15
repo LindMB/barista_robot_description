@@ -20,7 +20,7 @@ def generate_launch_description():
     robot_desc_path = os.path.join(get_package_share_directory(package_description), "xacro", urdf_file)
 
     # RViz Configuration
-    rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'config.rviz')
+    rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'config_two_robots.rviz')
     
     # RViz 
     rviz_node = Node(
