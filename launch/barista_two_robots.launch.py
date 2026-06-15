@@ -122,12 +122,36 @@ def generate_launch_description():
         ]
     )
 
+    static_tf_pub_to_rick_odom = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='static_tf_pub_world_to_' + robot_name_1 +'_odom', 
+        emulate_tty=True,
+        output='screen',
+        arguments=[str(robot_1_position[0]), str(robot_1_position[1]), str(robot_1_position[2]),
+                   str(robot_1_orientation[0]), str(robot_1_orientation[1]), str(robot_1_orientation[2]),
+                   'world', robot_name_1 + '/odom']
+    )
+
+    static_tf_pub_to_morty_odom = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='static_tf_pub_world_to_' + robot_name_2 +'_odom', 
+        emulate_tty=True,
+        output='screen',
+        arguments=[str(robot_2_position[0]), str(robot_2_position[1]), str(robot_2_position[2]),
+                   str(robot_2_orientation[0]), str(robot_2_orientation[1]), str(robot_2_orientation[2]),
+                   'world', robot_name_2 + '/odom']
+    )
+
     return LaunchDescription(
         [
+            gazebo,
             rsp_robot_1,
             rsp_robot_2,
             rviz_node,
-            gazebo,
+            static_tf_pub_to_rick_odom,
+            static_tf_pub_to_morty_odom,
             TimerAction(
                 period=3.0,
                 actions=[spawn_robot_1, 
