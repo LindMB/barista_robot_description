@@ -10,7 +10,9 @@
                 <geometry>
                     <cylinder radius="${tray_radius}" length="${tray_width}" />
                 </geometry>
-                <material name="blue" />
+
+                <!-- Change link color depending on robot_name -->
+                <material name="${robot_color}" />
             </visual>
 
             <collision>

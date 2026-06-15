@@ -2,7 +2,10 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot">
     
     <!-- Robot name -->
-    <xacro:property name="robot_name" value="$(arg robot_name)" />
+    <xacro:property name="robot_name" value="$(arg robot_name)"/>
+
+    <xacro:property name="robot_color"
+                    value="${'blue' if robot_name == 'morty' else 'red'}"/>
 
     <!-- Robot global dimensions -->
     <xacro:property name="base_link_radius" value="0.178" />
@@ -56,6 +59,10 @@
         <color rgba="0.0 0.5 0.0 1"/>
     </material>
 
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
     <!-- Base Footprint -->
     <link name="base_footprint"/>
 
@@ -71,7 +78,10 @@
             <geometry>
                 <cylinder radius="${base_link_radius}" length="${base_link_height}" />
             </geometry>
-            <material name="blue" />
+
+            <!-- Change link color depending on robot_name -->
+            <material name="${robot_color}" />
+
         </visual>
 
         <collision>

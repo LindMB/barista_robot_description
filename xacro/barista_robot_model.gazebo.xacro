@@ -5,7 +5,14 @@
 
         <!-- Gazebo Color for Base link-->
         <gazebo reference="base_link">
-            <material>Gazebo/Blue</material>
+
+            <xacro:if value="${robot_name == 'morty'}">
+                <material>Gazebo/Blue</material>
+            </xacro:if>
+            <xacro:unless value="${robot_name == 'morty'}">
+                <material>Gazebo/Red</material>
+            </xacro:unless>
+            
         </gazebo>
 
         <!-- Gazebo - Left Drive Wheel -->
@@ -66,7 +73,14 @@
 
         <!-- Gazebo Color for Cup Holder Tray -->
         <gazebo reference="cup_holder_tray">
-            <material>Gazebo/Blue</material>
+
+            <xacro:if value="${robot_name == 'morty'}">
+                <material>Gazebo/Blue</material>
+            </xacro:if>
+            <xacro:unless value="${robot_name == 'morty'}">
+                <material>Gazebo/Red</material>
+            </xacro:unless>
+            
         </gazebo>
 
         <!-- Gazebo Color for Laser Scan Link -->
