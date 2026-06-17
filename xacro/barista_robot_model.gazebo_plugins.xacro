@@ -85,6 +85,7 @@
                 <max_wheel_acceleration>2.0</max_wheel_acceleration>
 
                 <!-- output -->
+                <odometry_source>world</odometry_source>
                 <publish_odom>true</publish_odom>
                 <publish_odom_tf>true</publish_odom_tf>
 
