@@ -87,7 +87,7 @@ def generate_launch_description():
     )
     
     # Robot Position and orientation when spawned
-    robot_1_position = [0.0, 0.0, 0.0] # [X, Y, Z]
+    robot_1_position = [0.0, -1.0, 0.0] # [X, Y, Z]
     robot_1_orientation = [0.0, 0.0, 0.0]  # [Roll, Pitch, Yaw]
 
     # Spawn robot 1 Set Gazebo
