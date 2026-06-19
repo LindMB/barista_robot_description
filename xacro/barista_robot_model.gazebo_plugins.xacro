@@ -69,7 +69,6 @@
                 <ros>
                     <namespace>${robot_name}</namespace>
                     <remapping>/cmd_vel:=cmd_vel</remapping>
-                    <remapping>/odom:=odom</remapping>
                 </ros>
                 
                 <!-- wheel joints -->
